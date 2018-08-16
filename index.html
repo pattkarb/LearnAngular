@@ -10,13 +10,25 @@
 
 </head>
 
-<body ng-init="price=130;">
-    {{ 'dddadf'+'  '+'adfasdf' }}
-    <br>
-    {{ ((price * 30.5) - 15) | currency:'THB. ' }}
-
-    <script type="text/javascript" src="js/angular.min.js"></script>
-
-
+<body ng-init="price=130;
+    arr=['A','B','C','D'];
+    obj={'name':'A','Age':50};
+    arrObj = [
+        {'name':'Aming','Age':15,'Salary': 3200},
+        {'name':'Bming','Age':25,'Salary': 7800},
+        {'name':'Cming','Age':36,'Salary': 36000},
+        {'name':'Dming','Age':30,'Salary': 39100},
+        {'name':'Zming','Age':45,'Salary': 32800}
+    ];
+">
+    <div class="container" >
+      {{ 5*8 }}
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <script type="text/javascript">
+        function abc(){
+            console.log('this is');
+        };
+    </script>
 </body>
 </html>
