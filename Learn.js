@@ -134,6 +134,8 @@ Controller  ==>ใช้เป็นตัวกลางในการสื�
 
    <html ng-app='app'>
 
+   angular.module('app',[])   <== สร้างโมดูลขึ้นมาใหม่ชื่อว่า app
+
     angular.module('app',['customerModule']);
     angular.module('app')
         .controller('loginController', function($scope) {
@@ -149,3 +151,12 @@ Controller  ==>ใช้เป็นตัวกลางในการสื�
 
 
 --------------------------------------------------------
+a Link 
+
+    <a href="/">Home</a> |        <== link Home
+    <a href="#/customers">Customers</a> |  <== link other / router
+    <a href="#/about">About</a>
+
+    <script src="js/angular-route.js"></script>
+
+--------------------------------------------------------    
