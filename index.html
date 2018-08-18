@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app='app'>
 
 <head>
     <meta charset="UTF-8">
@@ -21,14 +21,31 @@
         {'name':'Zming','Age':45,'Salary': 32800}
     ];
 ">
-    <div class="container" >
-      {{ 5*8 }}
+    <div class="container" ng-controller="customerModule">
+      {{ 5*8 }} <br>
+
+    </div>
+
+    <div ng-controller="loginController">
+        {{ controllerName }}
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
-    <script type="text/javascript">
-        function abc(){
-            console.log('this is');
-        };
-    </script>
+   
+   <script type="text/javascript">
+    
+    angular.module('app',['customerModule']);
+    angular.module('app')
+        .controller('loginController', function($scope) {
+            $scope.controllerName = 'loginController';
+        });
+
+
+    angular.module('customerModule',[]);
+    angular.module('customerModule')
+        .controller('customerController', function($scope) {
+            $scope.controllerName = 'customerController';
+        });
+     
+   </script>
 </body>
 </html>

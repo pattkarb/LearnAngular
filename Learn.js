@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=E7cKkk2rgVY
+// https://www.youtube.com/watch?v=2QJRifW-zbs
 
 // เริ่ม ต้อง โหลด library Angular ก่อน
 
@@ -131,5 +131,21 @@ Controller  ==>ใช้เป็นตัวกลางในการสื�
     //ประกาศ Controller
 
     //not work
+
+   <html ng-app='app'>
+
+    angular.module('app',['customerModule']);
+    angular.module('app')
+        .controller('loginController', function($scope) {
+            $scope.controllerName = 'loginController';
+        });
+
+
+    angular.module('customerModule',[]);
+    angular.module('customerModule')
+        .controller('customerController', function($scope) {
+            $scope.controllerName = 'customerController';
+        });
+
 
 --------------------------------------------------------
