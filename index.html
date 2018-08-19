@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='app'>
+<html lang="en" ng-app>
 
 <head>
     <meta charset="UTF-8">
@@ -8,20 +8,31 @@
     <title>AngularLearn</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
+    <style>
+        input.ng-invalid {
+            border: 2px solid red;
+        }
+        span {
+            border: 0px;
+            font-style:italic;
+            color:greenyellow;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="contrainer">
-        <a href="/">Home</a> |
-        <a href="#/customers">Customers</a> |
-        <a href="#/about">About</a>
-        <br>
+    <div class="container">
+        <form name="userForm">
+            <input type="text" class='form-control' ng-model="user.name" placeholder="Name" required name='name'>
+            <span ng-show="userForm.name.$error.required&&!userForm.name.$pristine">Name is required</span>
+            <input type="email" class='form-control' ng-model="user.email" placeholder="email" required name='email'>
+            <span ng-show="userForm.email.$error.email&&!userForm.email.$pristine">Email invalid</span>
+        </form>
 
-        <h2>AngularJs - Single Page Application (SPA)</h2>
+        <pre>
+            {{ userForm.name }}
+        </pre>
 
-    </div>
-    <br>
-    <div ng-view>        
     </div>
 
     <script src="js/angular.min.js"></script>

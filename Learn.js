@@ -1,4 +1,6 @@
 // https://www.youtube.com/watch?v=2QJRifW-zbs
+// https://www.youtube.com/watch?v=Rqf7zJg7pfY
+
 
 // เริ่ม ต้อง โหลด library Angular ก่อน
 
@@ -149,7 +151,43 @@ Controller  ==>ใช้เป็นตัวกลางในการสื�
             $scope.controllerName = 'customerController';
         });
 
+---------------------
 
+<a href="/">Home</a> |
+<a href="#/customers">Customers</a> |
+<a href="#/about">About</a>
+
+angular.module('app', ['ngRoute'])
+    .controller('homeController', function ($scope) {
+        $scope.controllerName = 'This is homeController';
+    })
+    .controller('customerController', function ($scope) {
+        $scope.controllerName = 'This customerController';
+    })
+    .controller('customerDetailcontroller', function ($scope) {
+        $scope.controllerName = 'This customerDetailController';
+    })
+    .controller('aboutController', function ($scope) {
+        $scope.controllerName = 'This aboutController';
+    })
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when(
+                '/', {
+                    controller: 'homeController',
+                    templateUrl: 'home.html'
+                }
+            )
+            .when(
+                '/about', {
+                    controller: 'aboutController',
+                    templateUrl: 'about.html'
+                }
+            )
+            .otherwise({
+                redirectTo : '/'
+            })
+    });
 --------------------------------------------------------
 a Link 
 
@@ -160,3 +198,38 @@ a Link
     <script src="js/angular-route.js"></script>
 
 --------------------------------------------------------    
+Form Validatation
+<head>
+  <style>
+        input.ng-invalid {
+            border: 2px solid red;
+        }
+        span {
+            border: 0px;
+            font-style:italic;
+            color:greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form name="userForm">
+            <input type="text" class='form-control' ng-model="user.name" placeholder="Name" required name='name'>
+            <span ng-show="userForm.name.$error.required&&!userForm.name.$pristine">Name is required</span>
+            <input type="email" class='form-control' ng-model="user.email" placeholder="email" required name='email'>
+            <span ng-show="userForm.email.$error.email&&!userForm.email.$pristine">Email invalid</span>
+        </form>
+
+        <pre>
+            {{ userForm.name }}
+        </pre>
+
+    </div>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="script.js"></script>
+</body>
+
+-----------------------------------------------------------
