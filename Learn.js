@@ -326,3 +326,16 @@ ng-directives
     number      Format a number to a string.
     orderBy     Orders an array by an expression.
     uppercase   Format a string to upper case.
+
+    -angular -service
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope, $location) {
+        $scope.myUrl = $location.absUrl();
+    });
+
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+    $http.get("welcome.htm").then(function (response) {
+        $scope.myWelcome = response.data;
+    });
+    }); 
