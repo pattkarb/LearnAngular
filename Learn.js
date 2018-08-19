@@ -1,5 +1,6 @@
-// https://www.youtube.com/watch?v=2QJRifW-zbs
+﻿// https://www.youtube.com/watch?v=2QJRifW-zbs
 // https://www.youtube.com/watch?v=Rqf7zJg7pfY
+// https://www.youtube.com/watch?v=RsqEg1Jm9Qk   <== Ionic ang angular
 
 
 // เริ่ม ต้อง โหลด library Angular ก่อน
@@ -233,3 +234,95 @@ Form Validatation
 </body>
 
 -----------------------------------------------------------
+Angular **************
+----------------------------------------------------
+ng-directives
+    ng-app  ==> Application
+    ng-model    ==> value of HTML control to Application
+    ng-bind   ==> view of Application
+
+การสั่งให้ Angular ทำงาน prefix ng
+<div ng-app="" ng-init="firstName='John'">
+    <p>The name is <span ng-bind="firstName"></span></p>
+</div> 
+
+-angular- Expressions
+    <input type='text' ng-model='name'>
+        {{ 5+5 }}
+        {{ name }}
+
+-angular- Application
+    <div ng-app='patApp' ng-controller="firstControll" class="container">
+         MyName : {{ firstName + " " + lastName}}
+    </div>
+    <script>
+        var app = angular.module('patApp', []);
+        app.controller('firstControll', function ($scope) {
+            $scope.firstName = 'Pat';
+            $scope.lastName = 'Tangtrakunwigit';
+        })
+    </script>
+
+        *** module      => var app = angular.module('myApp', []); 
+        *** controller ==> 
+                    app.controller('myCtrl', function($scope) {
+                        $scope.firstName= "John";
+                        $scope.lastName= "Doe";
+                    }); 
+
+-angular - directives การสร้างไดเรคทีฟ
+
+<body ng-app="patApp">
+    
+    <w3-test-directive></w3-test-directive>
+
+    <script>
+        var app = angular.module('patApp', []);
+        app.directive('w3TestDirective', function () {
+            return {
+                restrict : "A",    <== E= for Element name, A=for Attribute, C=for Class, M=for Comment
+                template : "<h1>This is a Directive</h1>"
+            };
+        });
+    </script>
+</body>
+                    
+// สร้างในหลายรูปแบบ ได้แก่
+    <w3-test-directive></w3-test-directive> 
+    <div w3-test-directive></div>               
+    <div class="w3-test-directive"></div> 
+    <!-- directive: w3-test-directive --> 
+
+
+-angular-validate
+    ng-model
+    ng-show 
+        {{myForm.myAddress.$valid}}     // ผิดรูปแบบ
+        {{myForm.myAddress.$dirty}}     // มีการเปลี่ยนแปลง
+        {{myForm.myAddress.$touched}}   // มีการ focus
+    ng-invalid
+        input.ng-invalid {
+            background-color: lightblue;
+        }
+
+    ng-empty
+    ng-not-empty
+    ng-touched
+    ng-untouched
+    ng-valid
+    ng-invalid
+    ng-dirty
+    ng-pending
+    ng-pristine    
+
+
+-angular -filters
+    currency    ormat a number to a currency format.
+    date        Format a date to a specified format.
+    filter      Select a subset of items from an array.
+    json        Format an object to a JSON string.
+    limitTo     Limits an array/string, into a specified number of elements/characters.
+    lowercase   Format a string to lower case.
+    number      Format a number to a string.
+    orderBy     Orders an array by an expression.
+    uppercase   Format a string to upper case.

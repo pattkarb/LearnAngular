@@ -1,43 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en-US">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AngularLearn</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <style>
-        input.ng-invalid {
-            border: 2px solid red;
-        }
-        span {
-            border: 0px;
-            font-style:italic;
-            color:greenyellow;
-        }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body>
-    <div class="container">
-        <form name="userForm">
-            <input type="text" class='form-control' ng-model="user.name" placeholder="Name" required name='name'>
-            <span ng-show="userForm.name.$error.required&&!userForm.name.$pristine">Name is required</span>
-            <input type="email" class='form-control' ng-model="user.email" placeholder="email" required name='email'>
-            <span ng-show="userForm.email.$error.email&&!userForm.email.$pristine">Email invalid</span>
-        </form>
+<body ng-app="patApp">
+    
+    <w3-test-directive></w3-test-directive>
 
-        <pre>
-            {{ userForm.name }}
-        </pre>
-
-    </div>
-
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-route.js"></script>
-    <script src="script.js"></script>
+    <script>
+        var app = angular.module('patApp', []);
+        app.directive('w3TestDirective', function () {
+            return {
+                template : "<h1>This is a Directive</h1>"
+            };
+        });
+    </script>
 </body>
 
 </html>
