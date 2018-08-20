@@ -1,5 +1,7 @@
 ﻿// https://www.youtube.com/watch?v=2QJRifW-zbs
 // https://www.youtube.com/watch?v=Rqf7zJg7pfY
+// https://www.youtube.com/watch?v=2a6OfacW_-I&index=5&list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ <== English Version;
+
 // https://www.youtube.com/watch?v=RsqEg1Jm9Qk   <== Ionic ang angular
 
 
