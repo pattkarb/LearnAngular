@@ -339,3 +339,123 @@ ng-directives
         $scope.myWelcome = response.data;
     });
     }); 
+
+    --------------------------
+    angular-SQL
+
+<div ng-app="myApp" ng-controller="customersCtrl">
+<table>
+  <tr ng-repeat="x in names">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("customers_mysql.php")
+    .then(function (response) {$scope.names = response.data.records;});
+});
+</script> 
+
+    //file SQL php
+
+    <?php
+    header("Access-Control-Allow-Origin: *");
+    header("Content-Type: application/json; charset=UTF-8");
+    
+    $conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+    
+    $result = $conn->query("SELECT CompanyName, City, Country FROM Customers");
+    
+    $outp = "";
+    while($rs = $result->fetch_array(MYSQLI_ASSOC)) {
+        if ($outp != "") {$outp .= ",";}
+        $outp .= '{"Name":"'  . $rs["CompanyName"] . '",';
+        $outp .= '"City":"'   . $rs["City"]        . '",';
+        $outp .= '"Country":"'. $rs["Country"]     . '"}';
+    }
+    $outp ='{"records":['.$outp.']}';
+    $conn->close();
+    
+    echo($outp);
+    ?>    
+
+    ----------------------------
+    DOM
+
+        <p ng-show="true">I am visible.</p>
+        <p ng-show="false">I am not visible.</p>
+
+        ng-hide // true or false
+    ----------------------------
+    Events
+        ng-click
+        ng-dblclick
+        ng-change
+        ng-mouseover
+        .............
+    ----------------------------
+    ng-Switch
+
+    <form>
+    Select a topic:
+    <select ng-model="myVar">
+      <option value="">
+      <option value="dogs">Dogs
+      <option value="tuts">Tutorials
+      <option value="cars">Cars
+    </select>
+  </form>
+  
+  <div ng-switch="myVar">
+    <div ng-switch-when="dogs">
+       <h1>Dogs</h1>
+       <p>Welcome to a world of dogs.</p>
+    </div>
+    <div ng-switch-when="tuts">
+       <h1>Tutorials</h1>
+       <p>Learn from examples.</p>
+    </div>
+    <div ng-switch-when="cars">
+       <h1>Cars</h1>
+       <p>Read about cars.</p>
+    </div>
+  </div>
+
+ ----------------------------------- 
+includes
+    <div ng-include="'myFile.htm'"></div>
+------------------------------------
+AngularJS Animations
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.js"></script>
+------------------------------------
+Routing
+
+<body ng-app="myApp">
+    <p><a href="#/!">Main</a></p>
+    <a href="#!red">Red</a>
+    <a href="#!green">Green</a>
+    <a href="#!blue">Blue</a>
+    <div ng-view></div>
+<script>
+    var app = angular.module("myApp", ["ngRoute"]);
+    app.config(function($routeProvider) {
+    $routeProvider
+        .when("/", {
+            templateUrl : "main.htm"
+        })
+        .when("/red", {
+            templateUrl : "red.htm"
+        })
+        .when("/green", {
+            templateUrl : "green.htm"
+        })
+        .when("/blue", {
+            templateUrl : "blue.htm"
+        });
+    });
+</script>
+</body>
+------------------------------------
